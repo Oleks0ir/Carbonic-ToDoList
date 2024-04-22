@@ -4,10 +4,8 @@ import datetime
 
 #---Test Area-----------------------
 #Testing function for checking the connection between Library and Main code
-def Hello_World():
-	print("Hello World")
-
-
+def test():
+	return True
 #---Class Area-----------------------
 
 # Class 'Item' is created to store information of tasks. It stores: Title, Date of creation,
@@ -25,7 +23,7 @@ class Item:
 		
 #	The output function
 	def __str__(self):
-		return f"{self.title}({self.importance}) created on {self.date.strftime('%x  %X')}: \n {self.discription} "
+		return f"{self.title}({self.importance}) created on {self.date.strftime('%x  %X')}: \n {self.discription}"
 
 
 
