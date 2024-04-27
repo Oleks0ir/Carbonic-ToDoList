@@ -29,7 +29,7 @@ def test ():
 
 class Adressed_Item:
 
-    def __init__(self, name, adress, note):
+    def __init__(self, name ="", adress=0, note=""):
         self.name = name
         self.adress = adress
         self.note = note
@@ -40,28 +40,44 @@ class Adressed_Item:
         pass
 
 ##########################################
-def Read_DATAPOINTER_ (queue = 1):       #       POINTER >> {Line_in_Code[3]}{Name[20]}
-    file = open("SFile.txt", "r")
+def group(Input_List):
+    result=""
+    for i in range(0, len(Input_List)):
+        result += str(Input_List[i])
     
+    return result
 
-    Pointer = Adressed_Item
+def Read_DATAPOINTER_ (queue = 1):       #       POINTER >> {Line_in_Code[3]}{Name[20]}
+    file = open("Code\SFile.txt", "r")         #For whatsoever reason I MUST add ~Code\~
+
+    Pointer = Adressed_Item()
     Pointer_block = ''
 
     EntireLine= list(file.readline())
-    print(file.readline())
-    Pointer_block = EntireLine[(queue-1)*23:queue*23]
+    Pointer_block = EntireLine[(queue-1)*23:queue*23]       #somehow - it works!
+    del EntireLine
+    try:
+        Pointer.adress=int(group(Pointer_block[0:3]))
+        Pointer.name=group(Pointer_block[3:])
+    except ValueError:
+        Pointer.adress='PunPun'
+        pass
 
-    return (Pointer_block)
+    return (Pointer)
 
 
 def ReturnAllPointers ():
-    allPointers = {}
 
-    return allPointers()
+    allPointers = {}
+    i = 1
+    while Read_DATAPOINTER_(i).adress != 'PunPun':
+        allPointers[f"{str(Read_DATAPOINTER_(i).name)}"] = Read_DATAPOINTER_(i).adress
+        i += 1
+
+    return allPointers
 #    del allPointers
 
 
-file = open("SFile.txt", "r")
-print(file.readline())
-file = open("Hello world.txt", "r")
-print(file.readline())
+#print(Read_DATAPOINTER_(2))
+
+print(ReturnAllPointers())
