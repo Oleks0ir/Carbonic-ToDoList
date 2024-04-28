@@ -7,6 +7,7 @@ Max_Fails_allowed = 0
 try:    
     import Class_updater    #Class_updater.py import
     import datetime
+    import Storage
     # import Pikaboobert     #Junk Library
 except:
     Glob_fail_counter = 999     # Sets Gfc to the very high rate, so even all the the other tests are PASS, the overall result is FAIL. 
@@ -48,6 +49,14 @@ def Item_Test():
         Fail_counter+=1
         return "FAIL"
 
+def PointersTest():
+    Pointer_List = Storage.ReturnAllPointers()
+
+    if Pointer_List["TestTest_a1234567890"] == 4:
+        return "PASS"
+    else:
+        return "FAIL"
+    
 ###########################
 #Testing of connections
 print("---------TEST----------\n======CONNECTION TEST======\n")
@@ -62,6 +71,7 @@ print(f"====CONNECTION TEST({Evaluate()})====\n")
 #Other Tests
 print('=======OVERALL TEST=======\n')
 print(f"Item <- Class Test......({Item_Test()})")
+print(f"Pointers <- Storage.....({PointersTest()})")
 
 ###########################
 #End Messege

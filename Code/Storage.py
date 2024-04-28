@@ -9,6 +9,7 @@ def test ():
 #       POINTER >> {Line_in_Code[3] }{Name[20]}   
 #
 #   DATA STORED 
+
 #       Massive of lines. Lines are adressed in Line_in_Code. 1 line >> 1 file
 #       DATA_LINE Sructure:
 #               [:70]>POINTER   {PROPS_IN_USE [1]}                  << [0]
@@ -76,8 +77,5 @@ def ReturnAllPointers ():
 
     return allPointers
 #    del allPointers
-
-
 #print(Read_DATAPOINTER_(2))
-
-print(ReturnAllPointers())
+#print(ReturnAllPointers())
